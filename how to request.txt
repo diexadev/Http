@@ -1,0 +1,23 @@
+###Creating a Request
+
+$request = new Request();
+$request->setMethod('get');
+$request->setHost('https://www.detik.com/');
+$request->execute();
+print_r($request->getResponse());
+
+or
+
+$request = new Request('https://www.detik.com/');
+$request->execute();
+print_r($request->getResponse());
+
+###JSON Requests (application/json)
+$data = array('name' => 'ahmad', 'company' => 'mashape');
+$request->setHeaders(array(
+	'Accept' => 'application/json'
+	)
+);
+$request->setBody(Unirest\Request\Body::json($data));
+$request->execute();
+print_r($request->getResponse());
